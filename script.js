@@ -26,5 +26,28 @@ div.appendChild(start)
 
 function startQuiz(){
     div.textContent = ""
+
+
+    startTimer()
+}
+
+function startTimer(){
+    var secondsLeft = 60;
+    var timerText = document.createElement("p")
+    timerText.setAttribute("class", "timer")
+    body.appendChild(timerText)
+
+
+    var timer = setInterval(function(){
+        secondsLeft--
+        timerText.textContent = "Time: " + secondsLeft
+
+        if (secondsLeft === 0){
+            clearInterval(timer)
+        }
+    }, 1000)
+  
+
+    
 }
 start.addEventListener("click", startQuiz)
