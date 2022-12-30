@@ -25,6 +25,6 @@ div.appendChild(para2)
 div.appendChild(start)
 
 function startQuiz(){
-    
+    div.textContent = ""
 }
 start.addEventListener("click", startQuiz)
