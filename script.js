@@ -8,3 +8,23 @@ var para2 = document.createElement("p")
 
 var start = document.createElement("button")
 
+div.setAttribute("class", "container")
+h1.textContent = "Coding Quiz Challenge"
+
+para1.textContent = "Try to answer the following code-related questions within the time limit."
+para2.textContent= "Keep in mind that incorrect answers will penalize your score/time by ten seconds!"
+para1.setAttribute("class", "paragraph");
+para2.setAttribute("class", "paragraph");
+
+start.textContent= "Start"
+
+body.appendChild(div)
+div.appendChild(h1)
+div.appendChild(para1)
+div.appendChild(para2)
+div.appendChild(start)
+
+function startQuiz(){
+    
+}
+start.addEventListener("click", startQuiz)
