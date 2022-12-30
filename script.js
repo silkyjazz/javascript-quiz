@@ -45,7 +45,7 @@ function startQuiz(){
     div.appendChild(choiceB)
     div.appendChild(choiceC)
     div.appendChild(choiceD)
-    
+
     startTimer()
 }
 
@@ -69,3 +69,18 @@ function startTimer(){
     
 }
 start.addEventListener("click", startQuiz)
+
+/*
+to do:
+
+1: create an object or array that has questions, choices and answers for the quiz
+2. iterate through the array and display each question and choices in the correct html element (p tag/ button")
+3. if the users choice === answer, display "correct"
+4. if the users choice does not equal answer , display "wrong" and minus 10 seconds from the timer
+5. loop through the questions array until user answers all questions or timer runs out
+6. when seconds left === 0 , prompt user for name
+7. after the user enters name, display name and score (time left)
+
+
+special feature: display questions in a random order
+*/
