@@ -27,6 +27,18 @@ div.appendChild(start)
 function startQuiz(){
     div.textContent = ""
 
+    var quiz = [
+        {question: "How many primative data types are there?",
+        choices: ["4", "5","11", "7"],
+        answer: 3 },
+        {question: "",
+        choices: ["4", "5","11", "7"],
+        answer: 3 },
+        
+
+    ]
+
+   
     var p = document.createElement("p")
     var choiceA = document.createElement("button")
     var choiceB = document.createElement("button")
@@ -34,11 +46,11 @@ function startQuiz(){
     var choiceD = document.createElement("button")
 
 
-    p.textContent = "This is a question"
-    choiceA.textContent = "answer A"
-    choiceB.textContent = "answer B"
-    choiceC.textContent = "answer C"
-    choiceD.textContent = "answer D"
+    p.innerText = quiz[0].question
+    choiceA.textContent = quiz[0].choices[0]
+    choiceB.textContent = quiz[0].choices[1]
+    choiceC.textContent = quiz[0].choices[2]
+    choiceD.textContent = quiz[0].choices[3]
 
     div.appendChild(p)
     div.appendChild(choiceA)
