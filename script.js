@@ -27,6 +27,11 @@ div.appendChild(start)
 function startQuiz(){
     div.textContent = ""
 
+    var p = document.createElement("p")
+    var choiceA = document.createElement("button")
+    var choiceB = document.createElement("button")
+    var choiceC = document.createElement("button")
+    var choiceD = document.createElement("button")
 
     startTimer()
 }
