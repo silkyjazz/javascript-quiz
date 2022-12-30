@@ -33,6 +33,19 @@ function startQuiz(){
     var choiceC = document.createElement("button")
     var choiceD = document.createElement("button")
 
+
+    p.textContent = "This is a question"
+    choiceA.textContent = "answer A"
+    choiceB.textContent = "answer B"
+    choiceC.textContent = "answer C"
+    choiceD.textContent = "answer D"
+
+    div.appendChild(p)
+    div.appendChild(choiceA)
+    div.appendChild(choiceB)
+    div.appendChild(choiceC)
+    div.appendChild(choiceD)
+    
     startTimer()
 }
 
