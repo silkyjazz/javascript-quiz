@@ -15,10 +15,10 @@
 .container button {
     background-color: palevioletred;
     color: white;
-    width: 90px;
-    height: 40px;
-    margin: 10px;
-    border-radius: 10px;
+    width: 120px;
+    height: 30px;
+    margin: 5px;
+    border-radius: 5px;
 }
 
 .timer{

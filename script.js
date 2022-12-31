@@ -24,42 +24,22 @@ div.appendChild(para1)
 div.appendChild(para2)
 div.appendChild(start)
 
-function startQuiz(){
-    div.textContent = ""
-
-    var quiz = [
+ var quiz = [
         {question: "How many primative data types are there?",
-        choices: ["4", "5","11", "7"],
+        choiceA: "four",
+        choiceB: "five", 
+        choiceC: "ten", 
+        choiceD: "seven",
         answer: 3 },
-        {question: "",
-        choices: ["4", "5","11", "7"],
-        answer: 3 },
-        
+
+        {question: "Can you see this?",
+        choiceA: "Yes" ,
+        choiceB: "No" ,
+        choiceC: "Maybe" ,
+        choiceD: "IDK" ,
+        answer: 0 },
 
     ]
-
-   
-    var p = document.createElement("p")
-    var choiceA = document.createElement("button")
-    var choiceB = document.createElement("button")
-    var choiceC = document.createElement("button")
-    var choiceD = document.createElement("button")
-
-
-    p.innerText = quiz[0].question
-    choiceA.textContent = quiz[0].choices[0]
-    choiceB.textContent = quiz[0].choices[1]
-    choiceC.textContent = quiz[0].choices[2]
-    choiceD.textContent = quiz[0].choices[3]
-
-    div.appendChild(p)
-    div.appendChild(choiceA)
-    div.appendChild(choiceB)
-    div.appendChild(choiceC)
-    div.appendChild(choiceD)
-
-    startTimer()
-}
 
 function startTimer(){
     var secondsLeft = 60;
@@ -80,12 +60,41 @@ function startTimer(){
 
     
 }
+
+function startQuiz(){
+    div.textContent = ""
+
+   
+
+    var h1 = document.createElement("h1")
+    var choiceA = document.createElement("button")
+    var choiceB = document.createElement("button")
+    var choiceC = document.createElement("button")
+    var choiceD = document.createElement("button")
+
+
+    h1.innerText = quiz[0].question
+    choiceA.textContent = "1. " + quiz[0].choiceA
+    choiceB.textContent = "2. " + quiz[0].choiceB
+    choiceC.textContent = "3. " + quiz[0].choiceC
+    choiceD.textContent = "4. " + quiz[0].choiceD
+
+    div.appendChild(h1)
+    div.appendChild(choiceA)
+    div.appendChild(choiceB)
+    div.appendChild(choiceC)
+    div.appendChild(choiceD)
+
+    startTimer()
+}
+
+
 start.addEventListener("click", startQuiz)
 
 /*
 to do:
 
-1: create an object or array that has questions, choices and answers for the quiz
+✅ 1: create an object or array that has questions, choices and answers for the quiz
 2. iterate through the array and display each question and choices in the correct html element (p tag/ button")
 3. if the users choice === answer, display "correct"
 4. if the users choice does not equal answer , display "wrong" and minus 10 seconds from the timer
