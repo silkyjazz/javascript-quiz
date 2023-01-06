@@ -22,7 +22,7 @@ When the user starts the quiz, the function rendering the questions and choices 
 
 After the user has answered all the questions they will see an input field to enter in their intials
 
-![Score](assets/Screen%20Shot%202023-01-05%20at%2010.06.25%20PM.pngd)
+![Score](assets/Screen%20Shot%202023-01-05%20at%2010.06.25%20PM.png)
 
 
 ## License
