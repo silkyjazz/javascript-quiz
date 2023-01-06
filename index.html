@@ -8,6 +8,25 @@
     <title>Javscript Quiz</title>
 </head>
 <body>
+    <header>
+        Time: <span id="time"></span>
+    </header>
+    <section class="start-screen">
+        <h1>Coding Quiz</h1>
+        <p>Try to answer the following code-related questions within the time limit.
+            Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+        </p>
+        <button id="start">Start</button>
+    </section>
+    <section class="hide quiz-screen">
+        <h2 id="question">test</h2>
+        <div id="choices"></div>
+    </section>
+    <section class="hide score-screen">
+        <h4>Your score is : <span id="score"></span></h4>
+        <input id="initials" type="text" maxlength="3">
+        <button id="get-init">Submit</button>
+    </section>
     
     <script src="./script.js"></script>
 </body>

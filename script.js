@@ -1,94 +1,89 @@
 console.log("linked!")
 
-var body = document.body;
-var div = document.createElement("div");
-var h1 = document.createElement("h1");
-var para1 = document.createElement("p");
-var para2 = document.createElement("p")
+var start = document.querySelector("#start");
+var showTime = document.querySelector("#time");
+var startScreen = document.querySelector(".start-screen");
+var quizScreen = document.querySelector(".quiz-screen");
+var scoreScreen = document.querySelector(".score-screen");
+var showQuestion = document.querySelector("#question")
 
-var start = document.createElement("button")
-
-div.setAttribute("class", "container")
-h1.textContent = "Coding Quiz Challenge"
-
-para1.textContent = "Try to answer the following code-related questions within the time limit."
-para2.textContent= "Keep in mind that incorrect answers will penalize your score/time by ten seconds!"
-para1.setAttribute("class", "paragraph");
-para2.setAttribute("class", "paragraph");
-
-start.textContent= "Start"
-
-body.appendChild(div)
-div.appendChild(h1)
-div.appendChild(para1)
-div.appendChild(para2)
-div.appendChild(start)
-
- var quiz = [
+var secondsLeft = 5;
+var counter = 0
+var currentIndex= 0;
+var timer;
+var quiz = [
         {question: "How many primative data types are there?",
-        choiceA: "four",
-        choiceB: "five", 
-        choiceC: "ten", 
-        choiceD: "seven",
-        answer: 3 },
+        choices:["four", "five", "six", "seven" ] ,
+        answer: "seven" },
 
         {question: "Can you see this?",
-        choiceA: "Yes" ,
-        choiceB: "No" ,
-        choiceC: "Maybe" ,
-        choiceD: "IDK" ,
+        choices: ["Yes", "No", "maybe", "idk"],
         answer: 0 },
+]
 
-    ]
-
-function startTimer(){
-    var secondsLeft = 60;
-    var timerText = document.createElement("p")
-    timerText.setAttribute("class", "timer")
-    body.appendChild(timerText)
-
-
-    var timer = setInterval(function(){
-        secondsLeft--
-        timerText.textContent = "Time: " + secondsLeft
-
-        if (secondsLeft === 0){
-            clearInterval(timer)
-        }
-    }, 1000)
-  
-
-    
-}
 
 function startQuiz(){
-    div.textContent = ""
+    startScreen.classList.add("hide");
+    quizScreen.classList.remove("hide");
 
-   
+    timer = setInterval(function(){
+        secondsLeft--
+        showTime.textContent = secondsLeft;
 
-    var h1 = document.createElement("h1")
-    var choiceA = document.createElement("button")
-    var choiceB = document.createElement("button")
-    var choiceC = document.createElement("button")
-    var choiceD = document.createElement("button")
+        if (secondsLeft <= 0){
+            endQuiz();
+        }
+    }, 1000)
+
+    // var h1 = document.createElement("h1")
+    // var choiceA = document.createElement("button")
+    // choiceA.setAttribute('id','1')
+    // var choiceB = document.createElement("button")
+    // choiceB.setAttribute('id','2')
+    // var choiceC = document.createElement("button")
+    // choiceC.setAttribute('id','3')
+    // var choiceD = document.createElement("button")
+    // choiceD.setAttribute('id','4')
+
+    // h1.innerText = quiz[0].question
+    // choiceA.textContent = "1. " + quiz[0].choiceA
+    // choiceB.textContent = "2. " + quiz[0].choiceB
+    // choiceC.textContent = "3. " + quiz[0].choiceC
+    // choiceD.textContent = "4. " + quiz[0].choiceD
+
+    // div.appendChild(h1)
+    // div.appendChild(choiceA)
+    // div.appendChild(choiceB)
+    // div.appendChild(choiceC)
+    // div.appendChild(choiceD)
 
 
-    h1.innerText = quiz[0].question
-    choiceA.textContent = "1. " + quiz[0].choiceA
-    choiceB.textContent = "2. " + quiz[0].choiceB
-    choiceC.textContent = "3. " + quiz[0].choiceC
-    choiceD.textContent = "4. " + quiz[0].choiceD
+    
+    renderQuestions();
+}
 
-    div.appendChild(h1)
-    div.appendChild(choiceA)
-    div.appendChild(choiceB)
-    div.appendChild(choiceC)
-    div.appendChild(choiceD)
+function renderQuestions() {
+    currentQuestion = quiz[currentIndex];
+    showQuestion.textContent = currentQuestion.question
 
-    startTimer()
+    currentQuestion.answer.forEach(element => {
+        
+    });
 }
 
 
+
+function evaulateQuestion (){
+  
+    currentIndex
+    console.log("i was clicked")
+}
+
+function endQuiz() {
+    clearInterval(timer);
+    scoreScreen.classList.remove("hide");
+    quizScreen.classList.add("hide");
+}
 start.addEventListener("click", startQuiz)
 
 /*

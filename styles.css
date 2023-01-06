@@ -28,3 +28,7 @@
     left: 85%;
     bottom: 90%;
 }
+
+.hide{
+    display:none !important;
+}
