@@ -1,16 +1,16 @@
 var start = document.querySelector("#start"); //start button
 var countdown = document.querySelector("#time"); //timer text
-var questionEl = document.querySelector("#question") //question text
+var questionEl = document.querySelector("#question"); //question text
 var choicesEl = document.querySelector("#choices"); //answers
-var score = document.querySelector("#score") //score text
+var score = document.querySelector("#score"); //score text
+var message = document.querySelector("#message"); //message text
+
 
 var startScreen = document.querySelector(".start-screen");
 var quizScreen = document.querySelector(".quiz-screen");
 var scoreScreen = document.querySelector(".score-screen");
 
 
-// var choices = document.querySelector("#choices")
-// var showChoice1 = document.querySelector("#choice1")
 
 var secondsLeft = 55;
 var counter = 0
@@ -81,10 +81,6 @@ function renderQuestions() {
     questionEl.textContent = currentQuestion.question
     choicesEl.innerHTML = "";
     
-    // currentQuestion.choices.forEach(choice => {
-    //     showChoices.textContent = choice
-    //     console.log(choice)
-    // });
     currentQuestion.choices.forEach(function (choice, i){
         var choiceBtn = document.createElement("button");
         choiceBtn.setAttribute("value", choice);
@@ -92,39 +88,44 @@ function renderQuestions() {
         choiceBtn.onclick = evaulateQuestion;
         choicesEl.appendChild(choiceBtn);
     })
-
-    showChoices.addEventListener("click", evaulateQuestion)
    
 }
 
 
 function evaulateQuestion (e){
     //set a variable for correctAnswer
-    // var correctAnswer = currentQuestion.answer
-    // correctAnswer ? score++ : secondsLeft-10 
-    // currentIndex
-    console.log("i was clicked")
+
+   if(this.value !== quiz[currentIndex].answer){
+    secondsLeft-=10;
+    if(secondsLeft < 0){
+        secondsLeft = 0
+    }
+    countdown.textContent = secondsLeft;
+    message.textContent = `Wrong Answer`;
+    message.style.color = 'red';
+   }else{
+    message.textContent = `Correct Answer`;
+    message.style.color = 'green';
+   }
+   message.setAttribute("class","message");
+   setTimeout(function(){
+    message.setAttribute("class", "message hide");
+
+   }, 2000)
+
+   currentIndex++;
+   if(currentIndex === quiz.length){
+    endQuiz()
+   }else{
+    renderQuestions();
+   }
+
 }
 
 function endQuiz() {
     clearInterval(timer);
-    
     scoreScreen.classList.remove("hide");
     quizScreen.classList.add("hide");
 }
+
 start.addEventListener("click", startQuiz)
-
-/*
-to do:
-
-1: create an object or array that has questions, choices and answers for the quiz
-2. iterate through the array and display each question and choices in the correct html element (p tag/ button")
-3. if the users choice === answer, display "correct"
-4. if the users choice does not equal answer , display "wrong" and minus 10 seconds from the timer
-5. loop through the questions array until user answers all questions or timer runs out
-6. when seconds left === 0 , prompt user for name
-7. after the user enters name, display name and score (time left)
-
-
-special feature: display questions in a random order
-*/
