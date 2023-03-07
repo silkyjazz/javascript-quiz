@@ -1,6 +1,12 @@
 * {
     box-sizing: border-box;
 }
+body{
+    background: url('./blob-scene-haikei.png');
+    background-size: cover; 
+    background-repeat: no-repeat;  
+    color: white;  
+}
 
 .container{
     display: flex;
@@ -13,10 +19,10 @@
 }
 
 .container button {
-    background-color: palevioletred;
+    background-color: #FF6F61;
     color: white;
     width: 120px;
-    height: 35px;
+    height: 40px;
     margin: 5px;
     border-radius: 5px;
 }
@@ -38,4 +44,8 @@
 }
 #message{
     margin-top: 20px;
+}
+
+#title{
+    justify-content: center;
 }
