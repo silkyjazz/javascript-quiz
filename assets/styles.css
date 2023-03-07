@@ -16,7 +16,7 @@
     background-color: palevioletred;
     color: white;
     width: 120px;
-    height: 30px;
+    height: 35px;
     margin: 5px;
     border-radius: 5px;
 }
@@ -31,4 +31,11 @@
 
 .hide{
     display:none !important;
+}
+
+#choices{
+    height: 35px;
+}
+#message{
+    margin-top: 20px;
 }

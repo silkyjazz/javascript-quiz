@@ -4,7 +4,8 @@ var questionEl = document.querySelector("#question"); //question text
 var choicesEl = document.querySelector("#choices"); //answers
 var score = document.querySelector("#score"); //score text
 var message = document.querySelector("#message"); //message text
-
+var submitInitials = document.querySelector("#submit");
+var initials = document.querySelector('#initials')
 
 var startScreen = document.querySelector(".start-screen");
 var quizScreen = document.querySelector(".quiz-screen");
@@ -111,7 +112,7 @@ function evaulateQuestion (e){
    setTimeout(function(){
     message.setAttribute("class", "message hide");
 
-   }, 2000)
+   }, 1000)
 
    currentIndex++;
    if(currentIndex === quiz.length){
@@ -122,10 +123,27 @@ function evaulateQuestion (e){
 
 }
 
+function saveScore(){
+    var name = initials.value.trim()
+    if(initials !== ''){
+        var userScore = JSON.parse(localStorage.getItem("highscores")) || [];
+        var newScore = {
+            score: secondsLeft,
+            initials: name
+        }
+        userScore.push(newScore);
+        window.localStorage.setItem('highscores', JSON.stringify(userScore))
+    }
+}
+
 function endQuiz() {
     clearInterval(timer);
     scoreScreen.classList.remove("hide");
     quizScreen.classList.add("hide");
+    score.textContent = secondsLeft;
+
 }
+
+submitInitials.addEventListener("click", saveScore)
 
 start.addEventListener("click", startQuiz)
