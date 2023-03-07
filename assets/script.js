@@ -1,18 +1,25 @@
-console.log("linked!")
+var start = document.querySelector("#start"); //start button
+var countdown = document.querySelector("#time"); //timer text
+var questionEl = document.querySelector("#question") //question text
+var choicesEl = document.querySelector("#choices"); //answers
+var score = document.querySelector("#score") //score text
 
-var start = document.querySelector("#start");
-var showTime = document.querySelector("#time");
 var startScreen = document.querySelector(".start-screen");
 var quizScreen = document.querySelector(".quiz-screen");
 var scoreScreen = document.querySelector(".score-screen");
-var showQuestion = document.querySelector("#question")
-var showChoices = document.querySelector("#choices")
-var showChoice1 = document.querySelector("#choice1")
-var showScore = document.querySelector("#score")
+
+
+// var choices = document.querySelector("#choices")
+// var showChoice1 = document.querySelector("#choice1")
+
 var secondsLeft = 55;
 var counter = 0
 var currentIndex= 0;
 var timer;
+
+
+
+
 var quiz = [
         {question: "Where do the script tags belong in the html?",
         choices: ["Head", "Title", "Div", "Body"],
@@ -59,7 +66,7 @@ function startQuiz(){
 
     timer = setInterval(function(){
         secondsLeft--
-        showTime.textContent = secondsLeft;
+        countdown.textContent = secondsLeft;
 
         if (secondsLeft <= 0){
             endQuiz();
@@ -71,13 +78,20 @@ function startQuiz(){
 
 function renderQuestions() {
     currentQuestion = quiz[currentIndex];
-    showQuestion.textContent = currentQuestion.question
-
+    questionEl.textContent = currentQuestion.question
+    choicesEl.innerHTML = "";
     
-    currentQuestion.choices.forEach(choice => {
-        showChoices.textContent = choice
-        console.log(choice)
-    });
+    // currentQuestion.choices.forEach(choice => {
+    //     showChoices.textContent = choice
+    //     console.log(choice)
+    // });
+    currentQuestion.choices.forEach(function (choice, i){
+        var choiceBtn = document.createElement("button");
+        choiceBtn.setAttribute("value", choice);
+        choiceBtn.textContent = i + 1 + ". " + choice;
+        choiceBtn.onclick = evaulateQuestion;
+        choicesEl.appendChild(choiceBtn);
+    })
 
     showChoices.addEventListener("click", evaulateQuestion)
    
